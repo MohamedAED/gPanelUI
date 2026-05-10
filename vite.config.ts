@@ -7,5 +7,13 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
+    proxy: {
+      '/gPanel': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        // Optional: removes /api from the start if your backend 
+        // doesn't use that prefix: rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   },
 })
